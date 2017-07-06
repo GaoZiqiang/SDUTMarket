@@ -34,6 +34,30 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.0.0.Final</version>
+		</dependency>
 	</dependencies>
+	<build>
+		<finalName>SDUTMarket</finalName>
+		<plugins>
+			<!-- war package support -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<!-- wildfly deploy support -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.1.0.Alpha5</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
