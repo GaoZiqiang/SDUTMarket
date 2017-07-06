@@ -5,7 +5,7 @@ CREATE TABLE buied_item
 (
 	-- buied_item表的主键
 	id serial NOT NULL,
-	name bit varying,
+	name varchar(32),
 	-- category表的主键
 	category_id_fk int NOT NULL,
 	-- user表的主键
@@ -18,7 +18,7 @@ CREATE TABLE category
 (
 	-- category表的主键
 	id serial NOT NULL,
-	name bit varying,
+	name varchar(32),
 	PRIMARY KEY (id)
 ) WITHOUT OIDS;
 
@@ -28,7 +28,7 @@ CREATE TABLE pictures
 	-- picture表的主键
 	id serial NOT NULL,
 	-- picture在本地的路径
-	path bit varying,
+	path varchar(128),
 	-- published_item表的主键
 	published_item_id_fk int NOT NULL,
 	PRIMARY KEY (id)
@@ -39,14 +39,14 @@ CREATE TABLE published_item
 (
 	-- published_item表的主键
 	id serial NOT NULL,
-	name bit varying,
+	name varchar(32),
 	-- 物品发布时间
 	publish_time date,
 	origin_price float,
 	sell_price float,
-	status bit varying,
-	description bit varying,
-	picture bit varying,
+	status varchar(32),
+	description varchar(128),
+	picture varchar(32),
 	-- 是否支持"讲价"
 	bargin boolean,
 	-- category表的主键
@@ -61,10 +61,10 @@ CREATE TABLE selled_item
 (
 	-- selled_item表的主键
 	id serial NOT NULL,
-	name bit varying,
+	name varchar(32),
 	ogrigin_price float,
 	sell_price float,
-	status bit varying,
+	status varchar(32),
 	-- category表的主键
 	category_id_fk int NOT NULL,
 	-- user表的主键
@@ -77,12 +77,12 @@ CREATE TABLE users
 (
 	-- user表的主键
 	id serial NOT NULL,
-	name bit varying,
+	name varchar(32),
 	-- 用户昵称
-	nickname bit varying,
-	password bit varying,
+	nickname varchar(32),
+	password varchar(32),
 	-- 用户简介
-	introduction bit varying,
+	introduction varchar(128),
 	PRIMARY KEY (id)
 ) WITHOUT OIDS;
 
