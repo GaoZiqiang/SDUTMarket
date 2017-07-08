@@ -23,6 +23,17 @@ CREATE TABLE category
 ) WITHOUT OIDS;
 
 
+CREATE TABLE item_comment
+(
+	-- comment表的主键
+	id serial NOT NULL,
+	comments varchar(256),
+	-- user表的主键
+	comment_user_id_fk int NOT NULL,
+	PRIMARY KEY (id)
+) WITHOUT OIDS;q
+
+
 CREATE TABLE pictures
 (
 	-- picture表的主键
@@ -130,6 +141,14 @@ ALTER TABLE buied_item
 ;
 
 
+ALTER TABLE item_comment
+	ADD FOREIGN KEY (comment_user_id_fk)
+	REFERENCES users (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE published_item
 	ADD FOREIGN KEY (published_user_id_fk)
 	REFERENCES users (id)
@@ -153,6 +172,8 @@ COMMENT ON COLUMN buied_item.id IS 'buied_item表的主键';
 COMMENT ON COLUMN buied_item.category_id_fk IS 'category表的主键';
 COMMENT ON COLUMN buied_item.buied_user_id_fk IS 'user表的主键';
 COMMENT ON COLUMN category.id IS 'category表的主键';
+COMMENT ON COLUMN item_comment.id IS 'comment表的主键';
+COMMENT ON COLUMN item_comment.comment_user_id_fk IS 'user表的主键';
 COMMENT ON COLUMN pictures.id IS 'picture表的主键';
 COMMENT ON COLUMN pictures.path IS 'picture在本地的路径';
 COMMENT ON COLUMN pictures.published_item_id_fk IS 'published_item表的主键';
