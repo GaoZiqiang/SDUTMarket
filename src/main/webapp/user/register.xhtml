@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>用户注册</title>
+	<link href="../css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="../css/table-styles.css" rel="stylesheet" type="text/css" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body id="body">
+	<div class="container">
+		<div id="header">
+			<h1>稷下淘</h1>
+		</div>
+		<ul id="nav">
+			<li><a href="">最新发布</a></li>
+			<li><a href="">闲置数码</a></li>
+			<li><a href="">电器日用</a></li>
+			<li><a href="">图书教材</a></li>
+			<li><a href="">运动棋牌</a></li>
+			<li><a href="">票券小物</a></li>
+
+		</ul>
+		<div id="daohang">
+
+			<ul>
+
+				<li><a href="../index.jsf">首页</a></li>
+
+				<li><a href="../item/publish.jsf">我要发布</a></li>
+
+				<li><a href="#">导航2</a></li>
+
+				<li><a href="#">导航3</a></li>
+
+				<li><a href="#">导航4</a></li>
+
+				<li><a href="register.jsf">注册</a></li>
+
+				<li><a href="login.jsf">登录</a></li>
+
+			</ul>
+
+		</div>
+
+
+		<div id="section">
+			<h2>用户注册</h2>
+			<p>
+				<h:form>
+					<table>
+						<tr>
+							<td>用户名:</td>
+							<td><h:inputText name="username"
+									value="#{userManager.newStuff.username}" size="10" /></td>
+						</tr>
+
+						
+							<tr>
+								<td>昵称:</td>
+								<td><h:inputText name="username" value="" size="10" /></td>
+							</tr>
+
+							<tr>
+								<td>用户密码:</td>
+								<td><h:inputText name="password"
+										value="#{userManager.newStuff.password}" size="10" /></td>
+							</tr>
+						<tr>
+							<td>用户简介:</td>
+							<td><h:inputText name="email"
+									value="#{userManager.newStuff.email}" size="10" /></td>
+						</tr>
+
+						<tr>
+							<td><h:commandButton value="注册"
+									action="#{userManager.addStuff}" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</p>
+		</div>
+
+
+		<div id="footer">copyright@ 314softlab.com</div>
+	</div>
+</h:body>
+</html>
