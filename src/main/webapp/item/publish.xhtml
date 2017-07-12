@@ -17,6 +17,7 @@
 	<div class="container">
 		<div id="header">
 			<h1>稷下淘</h1>
+			<div>欢迎，#{facesContext.externalContext.sessionMap['userName']}</div>
 		</div>
 		<ul id="nav">
 			<li><a href="">最新发布</a></li>
@@ -45,6 +46,8 @@
 
 				<li><a href="../user/login.jsf">登录</a></li>
 
+				<li><a href="#">退出登录</a></li>
+
 			</ul>
 
 		</div>
@@ -52,55 +55,51 @@
 
 		<div id="section">
 			<h2>物品发布</h2>
-		<p>
-			<h:form>
-				<table>
-					<tr>
-						<td>物品名:</td>
-						<td><h:inputText name="username"
-								value="#{userManager.newStuff.username}" size="10" /></td>
-					</tr>
+			<p>
+				<h:form>
+					<table>
+						<tr>
+							<td>物品名:</td>
+							<td><h:inputText name="name"
+									value="#{publishController.publishedItem.name}" size="10" /></td>
+						</tr>
 
-					<tr>
-						<td>原价:</td>
-						<td><h:inputText name="password"
-								value="#{userManager.newStuff.password}" size="10" /></td>
-					</tr>
+						<tr>
+							<td>原价:</td>
+							<td><h:inputText name="origin_price"
+									value="#{publishController.publishedItem.originPrice}"
+									size="10" /></td>
+						</tr>
 
-					<tr>
-						<td>成色:</td>
-						<td><h:inputText name="email"
-								value="#{userManager.newStuff.email}" size="10" /></td>
-					</tr>
+						<tr>
+							<td>成色:</td>
+							<td><h:inputText name="status"
+									value="#{publishController.publishedItem.status}" size="10" /></td>
+						</tr>
 
-					<tr>
-						<td>出让价:</td>
-						<td><h:inputText name="email"
-								value="#{userManager.newStuff.email}" size="10" /></td>
-					</tr>
-					<tr>
-						<td>是否支持讲价：</td>
-						<td><h:selectOneRadio value="">
-								<f:selectItem id="item1" itemValue="root" itemLabel="可讲价" />
-								<f:selectItem id="item2" itemValue="student" itemLabel="谢绝讲价" />
-							</h:selectOneRadio></td>
-					</tr>
-                    <tr>
-						<td>物品描述:</td>
-						<td><h:inputText name="email"
-								value="#{userManager.newStuff.email}" size="10" /></td>
-					</tr>
-					<tr>
-						<td><h:commandButton value="确认发布"
-								action="#{userManager.addStuff}" /></td>
-					</tr>
-				</table>
-			</h:form>
-		</p>
+						<tr>
+							<td>出让价:</td>
+							<td><h:inputText name="sell_price"
+									value="#{publishController.publishedItem.sellPrice}" size="10" /></td>
+						</tr>
+
+						<tr>
+							<td>物品描述:</td>
+							<td><h:inputText name="description"
+									value="#{publishController.publishedItem.description}"
+									size="10" /></td>
+						</tr>
+						<tr>
+							<td><h:commandButton value="确认发布"
+									action="#{publishController.publish}" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</p>
 		</div>
 
 
-		<div id="footer">copyright@ 314softlab.com</div>
+		<div id="footer">copyright@ iWebStudio软件工作室</div>
 	</div>
 </h:body>
 </html>
