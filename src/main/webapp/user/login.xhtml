@@ -17,6 +17,7 @@
 	<div class="container">
 		<div id="header">
 			<h1>稷下淘</h1>
+			<div>欢迎，#{facesContext.externalContext.sessionMap['userName']}</div>
 		</div>
 		<ul id="nav">
 			<li><a href="">最新发布</a></li>
@@ -45,6 +46,8 @@
 
 				<li><a href="login.jsf">登录</a></li>
 
+				<li><a href="#">退出登录</a></li>
+
 			</ul>
 
 		</div>
@@ -57,17 +60,17 @@
 					<table>
 						<tr>
 							<td>用户名:</td>
-							<td><h:inputText name="username"
-									value="#{userManager.newStuff.username}" size="10" /></td>
+							<td><h:inputText name="name"
+									value="#{loginController.loginUser.name}" size="10" /></td>
 						</tr>
-							<tr>
-								<td>用户密码:</td>
-								<td><h:inputText name="password"
-										value="#{userManager.newStuff.password}" size="10" /></td>
-							</tr>
+						<tr>
+							<td>用户密码:</td>
+							<td><h:inputText name="password"
+									value="#{loginController.loginUser.password}" size="10" /></td>
+						</tr>
 						<tr>
 							<td><h:commandButton value="登录"
-									action="#{userManager.addStuff}" /></td>
+									action="#{loginController.login}" /></td>
 						</tr>
 					</table>
 				</h:form>
@@ -76,7 +79,7 @@
 		</div>
 
 
-		<div id="footer">copyright@ 314softlab.com</div>
+		<div id="footer">copyright@ iWebStudio软件工作室</div>
 	</div>
 </h:body>
 </html>
