@@ -44,6 +44,8 @@
 				<li><a href="register.jsf">注册</a></li>
 
 				<li><a href="login.jsf">登录</a></li>
+				
+				<li><a href="#">退出登录</a></li>
 
 			</ul>
 
@@ -58,29 +60,31 @@
 						<tr>
 							<td>用户名:</td>
 							<td><h:inputText name="username"
-									value="#{userManager.newStuff.username}" size="10" /></td>
+									value="#{registerController.registerUser.name}" size="10" /></td>
 						</tr>
 
-						
-							<tr>
-								<td>昵称:</td>
-								<td><h:inputText name="username" value="" size="10" /></td>
-							</tr>
 
-							<tr>
-								<td>用户密码:</td>
-								<td><h:inputText name="password"
-										value="#{userManager.newStuff.password}" size="10" /></td>
-							</tr>
+						<tr>
+							<td>昵称:</td>
+							<td><h:inputText name="nickname"
+									value="#{registerController.registerUser.nickname}" size="10" /></td>
+						</tr>
+
+						<tr>
+							<td>用户密码:</td>
+							<td><h:inputText name="password"
+									value="#{registerController.registerUser.password}" size="10" /></td>
+						</tr>
 						<tr>
 							<td>用户简介:</td>
-							<td><h:inputText name="email"
-									value="#{userManager.newStuff.email}" size="10" /></td>
+							<td><h:inputText name="introduction"
+									value="#{registerController.registerUser.introduction}"
+									size="10" /></td>
 						</tr>
 
 						<tr>
 							<td><h:commandButton value="注册"
-									action="#{userManager.addStuff}" /></td>
+									action="#{registerController.register}" /></td>
 						</tr>
 					</table>
 				</h:form>
@@ -88,7 +92,7 @@
 		</div>
 
 
-		<div id="footer">copyright@ 314softlab.com</div>
+		<div id="footer">copyright@ iWebStudio软件工作室</div>
 	</div>
 </h:body>
 </html>
