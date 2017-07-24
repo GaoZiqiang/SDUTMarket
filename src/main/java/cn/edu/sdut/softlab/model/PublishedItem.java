@@ -7,164 +7,155 @@ import java.util.Set;
 
 /**
  * The persistent class for the published_item database table.
- * 
+ *
  */
 @Entity
 @Table(name = "published_item")
 @NamedQuery(name = "PublishedItem.findAll", query = "SELECT p FROM PublishedItem p")
 public class PublishedItem implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@SequenceGenerator(name = "published_item_seq", sequenceName = "published_item_id_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "published_item_seq")
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	private Boolean bargin;
+    @Id
+    @SequenceGenerator(name = "published_item_seq", sequenceName = "published_item_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "published_item_seq")
+    private Integer id;
 
-	private String description;
+    private Boolean bargin;
 
-	private String name;
+    private String description;
 
-	@Column(name = "origin_price")
-	private double originPrice;
+    private String name;
 
-	private String picture;
+    @Column(name = "origin_price")
+    private double originPrice;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "publish_time")
-	private Date publishTime;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "publish_time")
+    private Date publishTime;
 
-	@Column(name = "sell_price")
-	private double sellPrice;
+    @Column(name = "sell_price")
+    private double sellPrice;
 
-	private String status;
+    private String status;
 
-	// bi-directional many-to-one association to Picture
-	@OneToMany(mappedBy = "publishedItem")
-	private Set<Picture> pictures;
+    // bi-directional many-to-one association to Picture
+    @OneToMany(mappedBy = "publishedItem")
+    private Set<Picture> pictures;
 
-	// bi-directional many-to-one association to Category
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id_fk")
-	private Category category;
+    // bi-directional many-to-one association to Category
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id_fk")
+    private Category category;
 
-	// bi-directional many-to-one association to User
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "published_user_id_fk")
-	private User user;
+    // bi-directional many-to-one association to User
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "published_user_id_fk")
+    private User user;
 
-	public PublishedItem() {
-	}
+    public PublishedItem() {
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Boolean getBargin() {
-		return this.bargin;
-	}
+    public Boolean getBargin() {
+        return this.bargin;
+    }
 
-	public void setBargin(Boolean bargin) {
-		this.bargin = bargin;
-	}
+    public void setBargin(Boolean bargin) {
+        this.bargin = bargin;
+    }
 
-	public String getDescription() {
-		return this.description;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public double getOriginPrice() {
-		return this.originPrice;
-	}
+    public double getOriginPrice() {
+        return this.originPrice;
+    }
 
-	public void setOriginPrice(double originPrice) {
-		this.originPrice = originPrice;
-	}
+    public void setOriginPrice(double originPrice) {
+        this.originPrice = originPrice;
+    }
 
-	public String getPicture() {
-		return this.picture;
-	}
+    public Date getPublishTime() {
+        return this.publishTime;
+    }
 
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
 
-	public Date getPublishTime() {
-		return this.publishTime;
-	}
+    public double getSellPrice() {
+        return this.sellPrice;
+    }
 
-	public void setPublishTime(Date publishTime) {
-		this.publishTime = publishTime;
-	}
+    public void setSellPrice(double sellPrice) {
+        this.sellPrice = sellPrice;
+    }
 
-	public double getSellPrice() {
-		return this.sellPrice;
-	}
+    public String getStatus() {
+        return this.status;
+    }
 
-	public void setSellPrice(double sellPrice) {
-		this.sellPrice = sellPrice;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public String getStatus() {
-		return this.status;
-	}
+    public Set<Picture> getPictures() {
+        return this.pictures;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+    }
 
-	public Set<Picture> getPictures() {
-		return this.pictures;
-	}
+    public Picture addPicture(Picture picture) {
+        getPictures().add(picture);
+        picture.setPublishedItem(this);
 
-	public void setPictures(Set<Picture> pictures) {
-		this.pictures = pictures;
-	}
+        return picture;
+    }
 
-	public Picture addPicture(Picture picture) {
-		getPictures().add(picture);
-		picture.setPublishedItem(this);
+    public Picture removePicture(Picture picture) {
+        getPictures().remove(picture);
+        picture.setPublishedItem(null);
 
-		return picture;
-	}
+        return picture;
+    }
 
-	public Picture removePicture(Picture picture) {
-		getPictures().remove(picture);
-		picture.setPublishedItem(null);
+    public Category getCategory() {
+        return this.category;
+    }
 
-		return picture;
-	}
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-	public Category getCategory() {
-		return this.category;
-	}
+    public User getUser() {
+        return this.user;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }
