@@ -7,11 +7,11 @@ import javax.inject.Named;
 @Named("facesTest")
 @RequestScoped
 public class FacesTest {
-
+	
 	/**
 	 * 测试facesContext存储的内容的作用域
 	 */
 	public void test() {
-		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName"));
+		System.out.println("---当前用户名：" +FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName"));
 	}
 }
