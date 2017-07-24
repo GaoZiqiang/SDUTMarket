@@ -95,7 +95,7 @@ public class LoginController {
 	 * 用户退出登录
 	 */
 	public void logOut() {
-		System.out.println("logOut方法测试:  " + FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName"));
+		System.out.println("logOut方法测试--当前用户名:  " + FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName"));
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ExternalContext extContext = facesContext.getExternalContext();
 		HttpServletRequest req = (HttpServletRequest) extContext.getRequest();
