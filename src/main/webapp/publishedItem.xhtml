@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+        <title>314 LabManagement Technology</title>
+        <!-- css style partly from: http://www.coreservlets.com/JSF-Tutorial/jsf2 -->
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body id="body">
+        <div class="container">
+            <div id="header">
+                <h1>稷下淘</h1>
+                <div>欢迎，#{facesContext.externalContext.sessionMap['userName']}</div>
+            </div>
+            <ul id="nav">
+                <li><a href="">最新发布</a></li>
+                <li><a href="">闲置数码</a></li>
+                <li><a href="">电器日用</a></li>
+                <li><a href="">图书教材</a></li>
+                <li><a href="">运动棋牌</a></li>
+                <li><a href="">票券小物</a></li>
+
+            </ul>
+            <div id="daohang">
+
+                <ul>
+
+                    <li><a href="../index.jsf">首页</a></li>
+
+                    <li><a href="#">我要发布</a></li>
+
+                    <li><a href="#">导航2</a></li>
+
+                    <li><a href="#">导航3</a></li>
+
+                    <li><a href="#">导航4</a></li>
+
+                    <li><a href="../user/register.jsf">注册</a></li>
+
+                    <li><a href="../user/login.jsf">登录</a></li>
+
+                    <li><a href="#">退出登录</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div id="section">
+                <h2>电子数码</h2>
+                <p>
+                    <h:form>
+                        <h:dataTable value = "#{electric.itemList}" var = "item"
+                                     styleClass = "eitemTable"
+                                     headerClass = "itemTableHeader"
+                                     rowClasses = "itemTableOddRow,itemTableEvenRow">
+
+                            <h:column>                  
+                                <f:facet name = "header">id</f:facet>                  
+                                    #{item.id}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name = "header">name</f:facet>
+                                    #{item.name}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name = "header">originPrice</f:facet>
+                                    #{item.originPrice}
+                            </h:column>
+
+
+                        </h:dataTable>
+                    </h:form>
+                </p>
+            </div>
+
+
+            <div id="footer">copyright@ iWebStudio软件工作室</div>
+        </div>
+    </h:body>
+</html>
