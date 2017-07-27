@@ -52,6 +52,7 @@ public class LoginController {
 	/**
 	 * 用户登录
 	 */
+        //登录设置建议：可以使用HttpServlet将user加入session
 	public void login() throws IllegalStateException, SecurityException, HeuristicMixedException,
 			HeuristicRollbackException, RollbackException, SystemException {
 		try {
