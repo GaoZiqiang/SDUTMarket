@@ -94,6 +94,7 @@ public class PublishController {
             System.out.print("---打印当前用户名---");
             System.out.print(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName").toString());
             //查找当前用户
+            //如果没有当前用户提醒用户登录
             Query query2 = em.createQuery("select u from User u where u.name = :name");
             query2.setParameter("name", FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userName"));
             List userList = query2.getResultList();
