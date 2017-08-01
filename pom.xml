@@ -47,7 +47,12 @@
             <version>1.3.1</version>
             <type>jar</type>
         </dependency>
-
+        <!-- primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>SDUTMarket</finalName>
