@@ -47,6 +47,13 @@
             <version>1.3.1</version>
             <type>jar</type>
         </dependency>
+        <!-- jsf2 support -->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.12</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- primefaces -->
         <dependency>
             <groupId>org.primefaces</groupId>
