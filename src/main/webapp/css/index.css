@@ -35,6 +35,10 @@ a {
   position: absolute;
   top: 0;
   z-index: 51; }
+  .logo-area .logo_bgc img {
+    position: relative;
+    margin-left: 155px;
+    margin-top: 15px; }
 .logo-area .logo_bgc:after {
   position: absolute;
   content: '';
