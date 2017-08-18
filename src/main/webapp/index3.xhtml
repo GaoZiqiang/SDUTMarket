@@ -17,7 +17,8 @@
         <div class="header">
             <nav class="nav1">
                 <div class="logo-area">
-                    <div class="logo_bgc"></div>
+                    <div class="logo_bgc">
+                        <img src="img/logo.png" height="60" width="588"/></div>
                 </div>
                 <div class="page-area">
                     <div class="page_bgc">
@@ -27,16 +28,16 @@
                             <li class="page_typewrap">
                                 <a href="" class="page_type">商品分类</a>
                                 <ul class="type_menu">
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
-                                    <li><a href="">商品分类</a></li>
+                                    <li><a href="">闲置数码</a></li>
+                                    <li><a href="">校园代步</a></li>
+                                    <li><a href="">电气日用</a></li>
+                                    <li><a href="">图书教材</a></li>
+                                    <li><a href="">美妆衣物</a></li>
+                                    <li><a href="">运动器材</a></li>
+                                    <li><a href="">票券小物</a></li>
                                 </ul>
                             </li>
-                            <li><a href="" class="page_release">我要发布</a></li>
+                            <li><a href="publish.html" class="page_release">我要发布</a></li>
                         </ul>
                         <div class="page_search">
                             <input type="text" class="search_text" />
@@ -297,7 +298,7 @@
         <div class="slidebar">
             <ul class="slide">
                 <li class="slide_type">
-                    <a href="#type1" class="type_name">闲置物品</a>
+                    <a href="#type1" class="type_name">闲置数码</a>
                 </li>
                 <li class="slide_type">
                     <a href="#type2" class="type_name">校园代步</a>
@@ -330,8 +331,7 @@
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > 480) {
                     $('.slidebar').css('opacity', '1')
-                }
-                if (scrollTop <= 480) {
+                } else {
                     $('.slidebar').css('opacity', '0')
                 }
             });
