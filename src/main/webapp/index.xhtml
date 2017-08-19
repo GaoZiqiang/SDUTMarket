@@ -22,7 +22,10 @@
             <ul id="nav">
                 <li><a href="">最新发布</a></li>
                 <li><a href="">闲置数码</a></li>
-                <li><a href="">电器日用</a></li>
+                <li>
+                    <h:form><h:commandLink action="#{electric.electricUtil}">电器日用</h:commandLink>
+                    </h:form></li>
+
                 <li><a href="">图书教材</a></li>
                 <li><a href="">运动棋牌</a></li>
                 <li><a href="">票券小物</a></li>
@@ -34,13 +37,9 @@
 
                     <li><a href="#">首页</a></li>
 
-                    <li><a href="item/publish.jsf">我要发布</a></li>
+                    <li><a href="upload/uploadImage.jsf">我要发布</a></li>
 
-                    <li><a href="#">导航2</a></li>
 
-                    <li><a href="#">导航3</a></li>
-
-                    <li><a href="#">导航4</a></li>
 
                     <li><a href="user/register.jsf">注册</a></li>
 
@@ -74,9 +73,13 @@
                         <td><h:commandButton value="uploadFileTest"
                                              action="#{uploadServlet.uploadController}" /></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><h:commandButton value="publishedItemTest"
                                              action="#{electric.eclectricUtil}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton value="查看产品列表"
+                                             action="#{electric.electricUtil}" /></td>
                     </tr>
                 </h:form>
             </div>
