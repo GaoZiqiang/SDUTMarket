@@ -13,7 +13,7 @@
     </h:head>
     <h:body>
         <h:form id="form">
-            <p:dataGrid var="electric" value="#{electric.itemList}" columns="3" layout="grid"
+            <p:dataGrid var="electric" value="#{publishedItemController.electricItemList}" columns="3" layout="grid"
                         rows="12" paginator="true" id="electirc"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="6,12,16">
@@ -24,6 +24,7 @@
 
                 <p:panel header="#{electric.name}" style="text-align:center">
                     <h:panelGrid columns="1" style="width:100%">
+                        <img src="#{electric.picturePath}" width="100"/>
                         <h:outputText value="#{electric.sellPrice}" />
                         <h:outputText value="#{electric.status}" />
                     </h:panelGrid>
