@@ -1,6 +1,7 @@
 package cn.edu.sdut.softlab.itemcontroller;
 
 import cn.edu.sdut.softlab.model.Category;
+import cn.edu.sdut.softlab.model.Picture;
 import java.sql.Date;
 
 import javax.enterprise.context.RequestScoped;
@@ -26,42 +27,52 @@ public class PublishController {
 
     //Credentials 
     private Credentials tempCategory = new Credentials();
-    
+    //Category
+    private Category currentCategory = new Category();
+    //newPicture
+    private Picture newPicture = new Picture();
+
+    public Picture getNewPicture() {
+        return newPicture;
+    }
+
+    public void setNewPicture(Picture newPicture) {
+        this.newPicture = newPicture;
+    }
+
     public Credentials getTempCategory() {
         return tempCategory;
     }
-    
+
     public void setTempCategory(Credentials tempCategory) {
         this.tempCategory = tempCategory;
     }
-    //Category
-    private Category currentCategory = new Category();
-    
+
     public Category getCurrentCategory() {
         return currentCategory;
     }
-    
+
     public void setCurrentCategory(Category currentCategory) {
         this.currentCategory = currentCategory;
     }
     // published_item
     private PublishedItem publishedItem = new PublishedItem();
-    
+
     public PublishedItem getPublishedItem() {
         return publishedItem;
     }
-    
+
     public void setPublishedItem(PublishedItem publishedItem) {
         this.publishedItem = publishedItem;
     }
 
     //user
     private User currentUser = new User();
-    
+
     public User getCurrentUser() {
         return currentUser;
     }
-    
+
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
@@ -71,7 +82,7 @@ public class PublishController {
      */
     public void publish() {
         System.out.println("测试开始！");
-        
+
         try {
             emf = Persistence.createEntityManagerFactory("SDUTMarket");
             em = emf.createEntityManager();
@@ -105,12 +116,22 @@ public class PublishController {
                     publishedItem.setUser(currentUser);
                 }
             }
-            
+            //打印fileRealPath
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tmpImagePath");
+            System.out.println("打印并检测fileRealPath: " + FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tmpImagePath"));
             publishedItem.setPublishTime(new Date(0));
             publishedItem.setBargin(true);
 
+            publishedItem.setPicturePath(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tmpImagePath").toString());
+            //添加newPicture的publishedItem属性
+            newPicture.setPublishedItem(publishedItem);
+            //添加newPicture的path属性
+            newPicture.setPath(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tmpImagePath").toString());
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("publishedItemId",
+                    publishedItem.getId());
             // 持久化到数据库
             em.persist(publishedItem);
+            em.persist(newPicture);
             // 提交事务
             em.getTransaction().commit();
         } catch (Exception e) {
