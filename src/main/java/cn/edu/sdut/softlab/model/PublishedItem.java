@@ -39,6 +39,9 @@ public class PublishedItem implements Serializable {
 
     private String status;
 
+    @Column(name = "picture_path")
+    private String picturePath;
+
     // bi-directional many-to-one association to Picture
     @OneToMany(mappedBy = "publishedItem")
     private Set<Picture> pictures;
@@ -118,6 +121,14 @@ public class PublishedItem implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     public Set<Picture> getPictures() {
