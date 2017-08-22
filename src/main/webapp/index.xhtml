@@ -21,14 +21,23 @@
             </div>
             <ul id="nav">
                 <li><a href="">最新发布</a></li>
-                <li><a href="">闲置数码</a></li>
                 <li>
-                    <h:form><h:commandLink action="#{electric.electricUtil}">电器日用</h:commandLink>
+                    <h:form><h:commandLink action="#{publishedItemController.digitalUtil}">闲置数码</h:commandLink>
+                    </h:form></li>
+                <li>
+                    <h:form><h:commandLink action="#{publishedItemController.electricUtil}">电器日用</h:commandLink>
                     </h:form></li>
 
-                <li><a href="">图书教材</a></li>
-                <li><a href="">运动棋牌</a></li>
-                <li><a href="">票券小物</a></li>
+                <li>
+                    <h:form><h:commandLink action="#{publishedItemController.bookUtil}">图书教材</h:commandLink>
+                    </h:form></li>
+                <li>
+                    <h:form><h:commandLink action="#{publishedItemController.sportUtil}">运动棋牌</h:commandLink>
+                    </h:form></li>
+                <li>
+                    <h:form><h:commandLink action="#{publishedItemController.ticketUtil}">票券小物</h:commandLink>
+                    </h:form></li>
+
 
             </ul>
             <div id="daohang">
@@ -78,8 +87,12 @@
                                              action="#{electric.eclectricUtil}" /></td>
                     </tr>
                     <tr>
+                        <td><h:commandButton value="测试publishedItemController"
+                                             action="#{publishedItemController.electricUtil}" /></td>
+                    </tr>
+                    <tr>
                         <td><h:commandButton value="查看产品列表"
-                                             action="#{electric.electricUtil}" /></td>
+                                             action="#{upload.testSession}" /></td>
                     </tr>
                 </h:form>
             </div>
