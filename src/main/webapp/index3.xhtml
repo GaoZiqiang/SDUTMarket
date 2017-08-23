@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/index.css" />
         <script src="js/jquery.min.js"></script>
         <link rel="stylesheet" href="css/login.css" />
+        <link rel="stylesheet" href="css/grid.css" />
         <script src="js/login.js"></script>
     </h:head>
     <h:body>
@@ -37,7 +38,7 @@
                                     <li><a href="">票券小物</a></li>
                                 </ul>
                             </li>
-                            <li><a href="publish.html" class="page_release">我要发布</a></li>
+                            <li><a href="upload/publish_img.jsf" class="page_release">我要发布</a></li>
                         </ul>
                         <div class="page_search">
                             <input type="text" class="search_text" />
@@ -52,16 +53,25 @@
                     </ul>
                     <!--登录-->
                     <div class="login-container">
-                        <span class="login-headline">帐号登陆</span>
-                        <span class="login-close">X</span>
-                        <div class="login-account">
-                            <input type="text" placeholder="请输入您的帐号" />
-                        </div>
-                        <div class="login-password">
-                            <input type="text" placeholder="请输入密码" />
-                        </div>
-                        <div class="login-buttonLogin">登录</div>
-                        <div class="login-forget"><a href="">忘记密码？</a></div>
+                        <h:form>
+                            <span class="login-headline">帐号登录</span>
+                            <span class="login-close">X</span>
+                            <div class="login-account">
+                                账号<br />
+                                <h:inputText name="login-username" value="#{loginController.loginUser.name}"
+                                             size="10" />
+                            </div>
+                            <div class="login-password">
+                                密码<br />
+                                <h:inputText name="login-password" value="#{loginController.loginUser.password}"
+                                             size="10" />
+                            </div>
+                            <h:commandButton class="login-buttonLogin" value="登录" action="#{loginController.login}"
+                                             size="10"
+                                             />
+
+                            <div class="login-forget"><a href="">忘记密码？</a></div>
+                        </h:form>
                     </div>
                     <!--注册-->
                     <div class="registration-container">
@@ -108,84 +118,50 @@
         </div>
         <div class="main">
             <div class="hot-area">
-                <div class="hot_title">热销区</div>
+                <div class="hot_title">新品发布</div>
                 <div class="hot_wrap">
+
                     <ul class="hot_content">
-                        <li class="hot_1">
-                            <img src="img/top1.png" class="top1" height="50" width="50"/>
-                            <div class="hot_img1"></div>
-                            <div class="hot_imgcontent1"></div>
-                        </li>
-                        <li class="hot_2">
-                            <div class="hot_img2"></div>
-                            <div class="hot_imgcontent2"></div>
-                        </li>
-                        <li class="hot_3">
-                            <div class="hot_img3"></div>
-                            <div class="hot_imgcontent3"></div>
-                        </li>
-                        <li class="hot_4">
-                            <div class="hot_img4"></div>
-                            <div class="hot_imgcontent4"></div>
-                        </li>
-                        <li class="hot_5">
-                            <div class="hot_img5"></div>
-                            <div class="hot_imgcontent5"></div>
-                        </li>
+                        <p:dataGrid class="hot_content grid_1" var="recent" value="#{publishedItemController.recentlyPublishItemList}" columns="5">
+
+                            <li class="new_1">
+                                <a href="information.html">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{recent.picturePath}" width="200"/>
+                                            <h:outputText value="#{recent.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{recent.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </a>
+                            </li>
+                        </p:dataGrid>
+
                     </ul>
                 </div>
             </div>
-            <div class="new-area">
-                <div class="new_title">新品发布</div>
-                <div class="new_wrap">
-                    <ul class="new_content">
-                        <li class="new_1">
-                            <div class="new_img1"></div>
-                            <div class="new_imgcontent1"></div>
-                        </li>
-                        <li class="new_2">
-                            <div class="new_img2"></div>
-                            <div class="new_imgcontent2"></div>
-                        </li>
-                        <li class="new_3">
-                            <div class="new_img3"></div>
-                            <div class="new_imgcontent3"></div>
-                        </li>
-                        <li class="new_4">
-                            <div class="new_img4"></div>
-                            <div class="new_imgcontent4"></div>
-                        </li>
-                        <li class="new_5">
-                            <div class="new_img5"></div>
-                            <div class="new_imgcontent5"></div>
-                        </li>
-                    </ul>
-                </div>
-                <!--<ul>-->
-                <!--<li>闲置数码</li>-->
-                <!--<li>校园代步</li>-->
-                <!--<li>电气日用</li>-->
-                <!--<li>图书教材</li>-->
-                <!--<li>美妆衣物</li>-->
-                <!--<li>运动器材</li>-->
-                <!--<li>票券小物</li>-->
-                <!--</ul>-->
-            </div>
+
             <div class="main-type">
                 <!--闲置-->
                 <div class="type_wrap" id="type1">
                     <div class="type_title">
                         <div class="title_left">闲置数码</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="digital.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
                         <ul class="bd_list">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <p:dataGrid class="hot_content grid_1" var="ticket" value="#{publishedItemController.ticketItemList}" columns="5">
+                                <li class="new_1">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{ticket.picturePath}" width="200"/>
+                                            <h:outputText value="#{ticket.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{ticket.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </li>
+                            </p:dataGrid>
                         </ul>
                     </div>
                 </div>
@@ -193,7 +169,7 @@
                 <div class="type_wrap" id="type2">
                     <div class="type_title">
                         <div class="title_left">校园代步</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="walk.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
@@ -210,7 +186,7 @@
                 <div class="type_wrap" id="type3">
                     <div class="type_title">
                         <div class="title_left">电气日用</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="electric.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
@@ -227,7 +203,7 @@
                 <div class="type_wrap" id="type4">
                     <div class="type_title">
                         <div class="title_left">图书教材</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="book.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
@@ -244,7 +220,7 @@
                 <div class="type_wrap" id="type5">
                     <div class="type_title">
                         <div class="title_left">美妆衣物</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="clothes">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
@@ -261,7 +237,7 @@
                 <div class="type_wrap" id="type6">
                     <div class="type_title">
                         <div class="title_left">运动器材</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="sport.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
@@ -278,16 +254,22 @@
                 <div class="type_wrap" id="type7">
                     <div class="type_title">
                         <div class="title_left">票券小物</div>
-                        <div class="title_right"><a href="">查看更多>></a></div>
+                        <div class="title_right"><a href="ticket.jsf">查看更多>></a></div>
                     </div>
                     <div class="type_banner"></div>
                     <div class="type_bd">
                         <ul class="bd_list">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <p:dataGrid class="hot_content grid_1" var="ticket" value="#{publishedItemController.ticketItemList}" columns="5">
+                                <li class="new_1">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{ticket.picturePath}" width="200"/>
+                                            <h:outputText value="#{ticket.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{ticket.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </li>
+                            </p:dataGrid>
                         </ul>
                     </div>
                 </div>
