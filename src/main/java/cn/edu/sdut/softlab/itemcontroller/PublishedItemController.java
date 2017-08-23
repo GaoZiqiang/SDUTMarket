@@ -53,6 +53,20 @@ public class PublishedItemController {
     List<PublishedItem> ticketItemList = new ArrayList<PublishedItem>();
     List<PublishedItem> bookItemList = new ArrayList<PublishedItem>();
     List<PublishedItem> sportItemList = new ArrayList<PublishedItem>();
+    List<PublishedItem> walkItemList = new ArrayList<PublishedItem>();
+    List<PublishedItem> clothesItemList = new ArrayList<PublishedItem>();
+    List<PublishedItem> recentlyPublishItemList = new ArrayList<PublishedItem>();
+
+    //2
+    List<PublishedItem> ticketItemList2 = new ArrayList<PublishedItem>();
+
+    public List<PublishedItem> getTicketItemList2() {
+        return ticketItemList2;
+    }
+
+    public void setTicketItemList2(List<PublishedItem> ticketItemList2) {
+        this.ticketItemList2 = ticketItemList2;
+    }
 
     public List<PublishedItem> getElectricItemList() {
         return electricItemList;
@@ -92,6 +106,50 @@ public class PublishedItemController {
 
     public void setSportItemList(List<PublishedItem> sportItemList) {
         this.sportItemList = sportItemList;
+    }
+
+    public PublishedItem getCurrentPublishedItem() {
+        return currentPublishedItem;
+    }
+
+    public void setCurrentPublishedItem(PublishedItem currentPublishedItem) {
+        this.currentPublishedItem = currentPublishedItem;
+    }
+
+    public List<PublishedItem> getRecentlyPublishItemList() {
+        return recentlyPublishItemList;
+    }
+
+    public void setRecentlyPublishItemList(List<PublishedItem> recentlyPublishItemList) {
+        this.recentlyPublishItemList = recentlyPublishItemList;
+    }
+
+    public List<PublishedItem> getWalkItemList() {
+        return walkItemList;
+    }
+
+    public void setWalkItemList(List<PublishedItem> walkItemList) {
+        this.walkItemList = walkItemList;
+    }
+
+    public List<PublishedItem> getClothesItemList() {
+        return clothesItemList;
+    }
+
+    public void setClothesItemList(List<PublishedItem> clothesItemList) {
+        this.clothesItemList = clothesItemList;
+    }
+
+    //新品发布处理
+    public String recentlyPublishUtil() {
+        emf = Persistence.createEntityManagerFactory("SDUTMarket");
+        em = emf.createEntityManager();
+
+        Query query = em.createQuery("select item from PublishedItem item order by id desc");
+        query.setMaxResults(5);
+        recentlyPublishItemList = query.getResultList();
+
+        return "index3.jsf";
     }
 
     //闲置数码物品处理
@@ -136,7 +194,7 @@ public class PublishedItemController {
         emf = Persistence.createEntityManagerFactory("SDUTMarket");
         em = emf.createEntityManager();
 
-        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'Book'");
+        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'Book' order by id desc");
         bookItemList = query.getResultList();
 
         return "book.jsf";
@@ -158,9 +216,33 @@ public class PublishedItemController {
         emf = Persistence.createEntityManagerFactory("SDUTMarket");
         em = emf.createEntityManager();
 
-        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'ticket'");
-        ticketItemList = query.getResultList();
+        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'ticket' order by id desc");
+        ticketItemList2 = query.getResultList();
+        //query.setMaxResults(5);
+        ticketItemList = query.setMaxResults(5).getResultList();
 
-        return "ticket.jsf";
+        return "index3.jsf";
+    }
+
+    //校园代步物品处理
+    public String walkUtil() {
+        emf = Persistence.createEntityManagerFactory("SDUTMarket");
+        em = emf.createEntityManager();
+
+        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'walk'");
+        walkItemList = query.getResultList();
+
+        return "index3.jsf";
+    }
+
+    //美妆衣物物品处理
+    public String clothesUtil() {
+        emf = Persistence.createEntityManagerFactory("SDUTMarket");
+        em = emf.createEntityManager();
+
+        Query query = em.createQuery("select item from PublishedItem item where item.category.name = 'clothes'");
+        clothesItemList = query.getResultList();
+
+        return "index3.jsf";
     }
 }
