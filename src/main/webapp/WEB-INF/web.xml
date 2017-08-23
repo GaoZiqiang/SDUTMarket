@@ -26,6 +26,20 @@
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
 
+    <!-- Upload Filter -->
+    <filter>
+        <filter-name>Upload Filter</filter-name>
+        <filter-class>com.corejsf.UploadFilter</filter-class>
+        <init-param>
+            <param-name>com.corejsf.UploadFilter.sizeThreshold</param-name>
+            <param-value>1024</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>Upload Filter</filter-name>
+        <url-pattern>/upload/*</url-pattern>
+    </filter-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
