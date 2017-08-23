@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>商品信息</title>
+        <link rel="stylesheet" href="css/information.css" />
+        <script src="js/jquery.min.js"></script>
+    </h:head>
+    <h:body>
+        <div id="screen"></div>
+        <div class="header">
+            <nav class="nav1">
+                <div class="logo-area">
+                    <div class="logo_bgc"></div>
+                </div>
+                <div class="page-area">
+                    <div class="page_bgc">
+                        <ul class="page_item">
+                            <span class="page_border"></span>
+                            <li><a href="index3.jsf" class="page_first">首页</a></li>
+                            <li class="page_typewrap">
+                                <a href="" class="page_type">商品分类</a>
+                                <ul class="type_menu">
+                                    <li><a href="">闲置数码</a></li>
+                                    <li><a href="">校园代步</a></li>
+                                    <li><a href="">电气日用</a></li>
+                                    <li><a href="">图书教材</a></li>
+                                    <li><a href="">美妆衣物</a></li>
+                                    <li><a href="">运动器材</a></li>
+                                    <li><a href="">票券小物</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="" class="page_release">我要发布</a></li>
+                        </ul>
+                        <div class="page_search">
+                            <input type="text" class="search_text" />
+                                <img src="img/search.png" height="20" width="20"/></div>
+                    </div>
+
+                </div>
+                <div class="log-area">
+                    <ul class="log_item">
+                        <li class="registration">注册</li>
+                        <li class="login">登录</li>
+                    </ul>
+                    <!--登录-->
+                    <div class="login-container">
+                        <span class="login-headline">帐号登录</span>
+                        <span class="login-close">X</span>
+                        <div class="login-account">
+                            <input type="text" placeholder="请输入您的帐号" />
+                        </div>
+                        <div class="login-password">
+                            <input type="text" placeholder="请输入密码" />
+                        </div>
+                        <div class="login-buttonLogin">登录</div>
+                        <div class="login-forget"><a href="">忘记密码？</a></div>
+                    </div>
+                    <!--注册-->
+                    <div class="registration-container">
+                        <span class="registration-headline">帐号注册</span>
+                        <span class="registration-close">X</span>
+                        <div class="registration-contact">
+                            <input type="text" placeholder="手机号/邮箱" />
+                        </div>
+                        <div class="registration-name">
+                            <input type="text" placeholder="请输入密码" />
+                        </div>
+                        <div class="registration-password">
+                            <input type="text" placeholder="请再次输入密码" />
+                        </div>
+                        <div class="registration-buttonSign">注册</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            
+
+            <div class="main-type">
+                <!--闲置-->
+                <div class="type_wrap" id="type1">
+                    <div class="type_title">
+                        <div class="title_left">美妆衣物</div>
+                        
+                    </div>
+                    <div class="type_banner"></div>
+                    <div class="type_bd">
+                        <ul class="bd_list">
+                            <p:dataGrid class="hot_content grid_1" var="ticket" value="#{publishedItemController.ticketItemList}" columns="5">
+                                <li class="new_1">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{ticket.picturePath}" width="200"/>
+                                            <h:outputText value="#{ticket.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{ticket.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+        
+    </h:body>
+</html>
