@@ -1,127 +1,147 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core">
+        <f:event type="preRenderView" listener="#{publishedItemController.returnToIndex}"/>
+    </f:view>
     <h:head>
-        <title>314 LabManagement Technology</title>
-        <!-- css style partly from: http://www.coreservlets.com/JSF-Tutorial/jsf2 -->
-        <link href="css/styles.css" rel="stylesheet" type="text/css" />
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="UTF-8" />
+        <title>首页</title>
+        <link rel="stylesheet" href="css/index.css" />
+        <script src="js/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/login.css" />
+        <link rel="stylesheet" href="css/grid.css" />
+        <script src="js/login.js"></script>
     </h:head>
-    <h:body id="body">
-        <div class="container">
-            <div id="header">
-                <h1>稷下淘</h1>
-                <div>欢迎，#{facesContext.externalContext.sessionMap['userName']}</div>
-            </div>
-            <ul id="nav">
-                <li><a href="">最新发布</a></li>
-                <li>
-                    <h:form><h:commandLink action="#{publishedItemController.digitalUtil}">闲置数码</h:commandLink>
-                    </h:form></li>
-                <li>
-                    <h:form><h:commandLink action="#{publishedItemController.electricUtil}">电器日用</h:commandLink>
-                    </h:form></li>
+    <h:body>
+        <div id="screen"></div>
+        <div class="header">
+            <nav class="nav1">
+                <div class="logo-area">
+                    <div class="logo_bgc">
+                        <a href="index.jsf" style="display: block;width:100%;height:100%">
+                            <img src="img/logo.png" alt=""/>
+                        </a>
 
-                <li>
-                    <h:form><h:commandLink action="#{publishedItemController.bookUtil}">图书教材</h:commandLink>
-                    </h:form></li>
-                <li>
-                    <h:form><h:commandLink action="#{publishedItemController.sportUtil}">运动棋牌</h:commandLink>
-                    </h:form></li>
-                <li>
-                    <h:form><h:commandLink action="#{publishedItemController.ticketUtil}">票券小物</h:commandLink>
-                    </h:form></li>
+                    </div>
+                </div>
+                <div class="page-area">
+                    <div class="page_bgc">
+                        <ul class="page_item">
+                            <span class="page_border"></span>
+                            <li><a class="page_first">首页</a></li>
+                            <li class="page_typewrap">
+                                <a class="page_type">商品分类</a>
+                                <ul class="type_menu">
+                                    <li><h:form><h:commandLink action="#{publishedItemController.digitalUtil}">闲置数码</h:commandLink>
+                                        </h:form></li>
+                                    <li><h:form><h:commandLink action="#{publishedItemController.walkUtil}">校园代步</h:commandLink>
+                                        </h:form></li>
+                                    <li><h:form><h:commandLink action="#{publishedItemController.electricUtil}">电气日用</h:commandLink>
+                                        </h:form></li>
+                                    <li><a href="book.jsf">图书教材</a></li>
+                                    <li><h:form><h:commandLink action="#{publishedItemController.clothesUtil}">美妆衣物</h:commandLink>
+                                        </h:form></li>
+                                    <li><h:form><h:commandLink action="#{publishedItemController.sportUtil}">运动器材</h:commandLink>
+                                        </h:form></li>
+                                    <li><h:form><h:commandLink action="#{publishedItemController.ticketUtil}">票券小物</h:commandLink>
+                                        </h:form></li>
+                                </ul>
+                            </li>
+                            <li><h:form><h:commandLink class="page_release" action="#{loginController.isLogined}">我要发布</h:commandLink>
+                                </h:form></li>
+                        </ul>
+                        <div class="page_search">
+                            <input type="text" class="search_text" />
+                            <img src="img/search.png" height="20" width="20"/></div>
+                    </div>
 
+                </div>
+                <div class="log-area">
+                    <ul class="log_item">
+                        <li class="registration">注册</li>
+                        <li class="login">登录</li>
+                    </ul>
+                    <!--登录-->
+                    <div class="login-container">
+                        <h:form>
+                            <span class="login-headline">帐号登录</span>
+                            <span class="login-close">X</span>
+                            <div class="login-account">
+                                账号<br />
+                                <h:inputText name="login-username" value="#{loginController.loginUser.name}"
+                                             size="10" />
+                            </div>
+                            <div class="login-password">
+                                密码<br />
+                                <h:inputText name="login-password" value="#{loginController.loginUser.password}"
+                                             size="10" />
+                            </div>
+                            <h:commandButton class="login-buttonLogin" value="登录" action="#{loginController.login}"
+                                             size="10"
+                                             />
 
+                            <div class="login-forget"><a href="">忘记密码？</a></div>
+                        </h:form>
+                    </div>
+                    <!--注册-->
+                    <div class="registration-container">
+                        <h:form>
+                            <span class="registration-headline">帐号注册</span>
+                            <span class="registration-close">X</span>
+                            <div class="registration-contact">
+                                <h:inputText name="username" placeholder="5-20个英语，字符，数字，区分大小写"
+                                             value="#{registerController.registerUser.name}" size="10" />
+                            </div>
+                            <div class="registration-name">
+                                <h:inputText name="password" placeholder="5-20个英语，字符，数字，区分大小写"
+                                             value="#{registerController.registerUser.password}" size="10" />
+                            </div>
+
+                            <h:commandButton class="login-buttonLogin" value="注册" action="#{registerController.register}"
+                                             size="10"
+                                             />
+
+                        </h:form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="banner">
+            <ul class="banner-content">
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/c7aa20fa9874d58ff49a565b9e1053f3.jpg" alt="" /></a></li>
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/5aa1e25a7d218f14ff2f8d0ec248f188.jpg" alt="" /></a></li>
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/b84501487e3fcbf3110fa7c9658279eb.jpg" alt="" /></a></li>
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/974af32936128c59b3e39512839c99ec.jpg" alt="" /></a></li>
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/2f2812559c5eafcea2c8b24749a06e1c.jpg" alt="" /></a></li>
+                <li><a href=""><img src="http://yanxuan.nosdn.127.net/965ab715c2d4187b00311f5c3e396794.jpg" alt="" /></a></li>
             </ul>
-            <div id="daohang">
+            <div class="next"><img src="img/右箭头.png" height="40" width="40"/></div>
+            <div class="prev"><img src="img/左箭头.png" height="40" width="40"/></div>
+            <ul class="banner-dots">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="hot-area">
+                <div class="hot_title">新品发布</div>
+                <div class="hot_wrap">
 
-                <ul>
+                    <ul class="hot_content">
+                        <p:dataGrid class="hot_content grid_1" var="recent" value="#{publishedItemController.recentlyPublishItemList}" columns="5">
 
-                    <li><a href="#">首页</a></li>
-
-                    <li><a href="upload/uploadImage.jsf">我要发布</a></li>
-
-
-
-                    <li><a href="user/register.jsf">注册</a></li>
-
-                    <li><a href="user/login.jsf">登录</a></li>
-
-                    <li><a href="#">退出登录</a></li>
-
-                </ul>
-
-            </div>
-
-
-            <div id="section">
-                <h3>
-                    欢迎使用 <br />稷下淘--理工大学二手交易市场
-                </h3>
-                <h:form>
-                    <tr>
-                        <td><h:commandButton value="facesTest"
-                                             action="#{facesTest.test}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="logOutTest"
-                                             action="#{loginController.logOut}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="uploadFileTest"
-                                             action="#{uploadServlet.uploadFileTest}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="uploadFileTest"
-                                             action="#{uploadServlet.uploadController}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="publishedItemTest"
-                                             action="#{electric.eclectricUtil}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="测试publishedItemController"
-                                             action="#{publishedItemController.ticketUtil}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="查看产品列表"
-                                             action="#{upload.testSession}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="新品发布"
-                                             action="#{publishedItemController.recentlyPublishUtil}" /></td>
-                    </tr>
-                    <tr>
-                        <td><h:commandButton value="新品发布"
-                                             action="#{publishedItemController.bookUtil}" /></td>
-                    </tr>
-                     <tr>
-                        <td><h:commandButton value="EnTest"
-                                             action="#{test.EnTest}" /></td>
-                    </tr> 
-                    
-                    <tr>
-                        <td><h:commandButton value="EnTest"
-                                             action="#{fuzzyQuery.fuzzyQuery}" /></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><h:commandButton value="turnToIndex"
-                                             action="#{publishedItemController.returnToIndex}" /></td>
-                    </tr>
-                    <br />
-                    
-                    <p:dataGrid  var="recent" value="#{fuzzyQuery.fuzzyQueryList}" columns="5">
-
+                            <li class="new_1">
+                                <a href="information.html">
                                     <p:panel>
                                         <h:panelGrid>
                                             <img class="hot_content_img" src="#{recent.picturePath}" width="200"/>
@@ -129,12 +149,256 @@
                                             <h:outputText value="#{recent.name}" class="hot_content_name"/>
                                         </h:panelGrid>
                                     </p:panel>
+                                </a>
+                            </li>
                         </p:dataGrid>
-                </h:form>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-type">
+                <!--闲置-->
+                <div class="type_wrap" id="type1">
+                    <div class="type_title">
+                        <div class="title_left">闲置数码</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.digitalUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/digital.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="digital" value="#{publishedItemController.digitalItemList}" columns="5">
+                                <li class="new_1">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{digital.picturePath}" width="200"/>
+                                            <h:outputText value="#{digital.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{digital.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                <!--代步-->
+                <div class="type_wrap" id="type2">
+                    <div class="type_title">
+                        <div class="title_left">校园代步</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.walkUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/walk.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+
+                    <div class="type_bd">
+                        <ul class="bd_list">
+                            <p:dataGrid class="hot_content grid_1" var="walk" value="#{publishedItemController.walkItemList}" columns="5">
+
+                                <li class="new_1">
+                                    <a href="information.html">
+                                        <p:panel>
+                                            <h:panelGrid>
+                                                <img class="hot_content_img" src="#{walk.picturePath}" width="200"/>
+                                                <h:outputText value="#{walk.sellPrice}" class="hot_content_price" />
+                                                <h:outputText value="#{walk.name}" class="hot_content_name"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </a>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                <!--日用-->
+                <div class="type_wrap" id="type3">
+                    <div class="type_title">
+                        <div class="title_left">电气日用</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.electricUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/electric.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="electric" value="#{publishedItemController.electricItemList}" columns="5">
+
+                                <li class="new_1">
+                                    <a href="information.html">
+                                        <p:panel>
+                                            <h:panelGrid>
+                                                <img class="hot_content_img" src="#{electric.picturePath}" width="200"/>
+                                                <h:outputText value="#{electric.sellPrice}" class="hot_content_price" />
+                                                <h:outputText value="#{electric.name}" class="hot_content_name"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </a>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                <!--图书-->
+                <div class="type_wrap" id="type4">
+                    <div class="type_title">
+                        <div class="title_left">图书教材</div>
+                        <div class="title_right"><a href="book.jsf">查看更多>></a></div>
+                    </div>
+                    <div class="type_banner"><img src="img/book.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="book" value="#{publishedItemController.bookItemList}" columns="5">
+
+                                <li class="new_1">
+                                    <a href="information.html">
+                                        <p:panel>
+                                            <h:panelGrid>
+                                                <img class="hot_content_img" src="#{book.picturePath}" width="200"/>
+                                                <h:outputText value="#{book.sellPrice}" class="hot_content_price" />
+                                                <h:outputText value="#{book.name}" class="hot_content_name"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </a>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                <!--美妆-->
+                <div class="type_wrap" id="type5">
+                    <div class="type_title">
+                        <div class="title_left">美妆衣物</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.clothesUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/clothes.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="clothes" value="#{publishedItemController.clothesItemList}" columns="5">
+
+                                <li class="new_1">
+                                    <a href="information.html">
+                                        <p:panel>
+                                            <h:panelGrid>
+                                                <img class="hot_content_img" src="#{clothes.picturePath}" width="200"/>
+                                                <h:outputText value="#{clothes.sellPrice}" class="hot_content_price" />
+                                                <h:outputText value="#{clothes.name}" class="hot_content_name"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </a>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>、
+                <!--运动-->
+                <div class="type_wrap" id="type6">
+                    <div class="type_title">
+                        <div class="title_left">运动器材</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.sportUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/sport.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="sport" value="#{publishedItemController.sportItemList}" columns="5">
+
+                                <li class="new_1">
+                                    <a href="information.html">
+                                        <p:panel>
+                                            <h:panelGrid>
+                                                <img class="hot_content_img" src="#{sport.picturePath}" width="200"/>
+                                                <h:outputText value="#{sport.sellPrice}" class="hot_content_price" />
+                                                <h:outputText value="#{sport.name}" class="hot_content_name"/>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </a>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+                <!--票券-->
+                <div class="type_wrap" id="type7">
+                    <div class="type_title">
+                        <div class="title_left">票券小物</div>
+                        <div class="title_right"><h:form><h:commandLink action="#{publishedItemController.ticketUtil}">查看更多>></h:commandLink>
+                            </h:form></div>
+                    </div>
+                    <div class="type_banner"><img src="img/ticket.jpg" alt="" style="width: 100%;
+                                                  height:300px" /></div>
+                    <div class="type_bd">
+                        <ul class="hot_content">
+                            <p:dataGrid class="hot_content grid_1" var="ticket" value="#{publishedItemController.ticketItemList}" columns="5">
+                                <li class="new_1">
+                                    <p:panel>
+                                        <h:panelGrid>
+                                            <img class="hot_content_img" src="#{ticket.picturePath}" width="200"/>
+                                            <h:outputText value="#{ticket.sellPrice}" class="hot_content_price" />
+                                            <h:outputText value="#{ticket.name}" class="hot_content_name"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
 
 
-            <div id="footer">copyright@ iWebStudio软件工作室</div>
         </div>
+        <div class="slidebar">
+            <ul class="slide">
+                <li class="slide_type">
+                    <a href="#type1" class="type_name">闲置数码</a>
+                </li>
+                <li class="slide_type">
+                    <a href="#type2" class="type_name">校园代步</a>
+                </li>
+                <li class="slide_type">
+                    <a href="#type3" class="type_name">电气日用</a>
+                </li>
+                <li class="slide_type" >
+                    <a href="#type4" class="type_name">图书教材</a>
+                </li>
+                <li class="slide_type">
+                    <a href="#type5" class="type_name">美妆衣物</a>
+                </li>
+                <li class="slide_type">
+                    <a href="#type6" class="type_name">运动器材</a>
+                </li>
+                <li class="slide_type">
+                    <a href="#type7" class="type_name">票券小物</a>
+                </li>
+                <li class="slide_type gotop">
+                    <img src="img/上箭头.png" height="40" width="40"/>
+                </li>
+            </ul>
+        </div>
+        <script src="js/index.js"></script>
+        <script src="js/banneer.js"></script>
+
+        <script>
+            $(window).on('scroll', function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > 480) {
+                    $('.slidebar').css('opacity', '1')
+                } else {
+                    $('.slidebar').css('opacity', '0')
+                }
+            });
+            $('.gotop').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                })
+            })
+        </script>
     </h:body>
 </html>
