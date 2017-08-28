@@ -28,6 +28,12 @@
             <version>1.0</version>
         </dependency>
         <!-- javaeep-web-api -->
+        <!--        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-product-tests</artifactId>
+            <version>0.183-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -60,6 +66,15 @@
             <artifactId>primefaces</artifactId>
             <version>6.0</version>
         </dependency>
+        <!-- freemarker -->
+        <dependency>
+            <groupId>freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.8</version>
+        </dependency>
+
+
+
     </dependencies>
     <build>
         <finalName>SDUTMarket</finalName>
