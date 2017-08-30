@@ -67,9 +67,23 @@
                 <h3>
                     欢迎使用 <br />稷下淘--理工大学二手交易市场
                 </h3>
-                <h:form>
+<!--                <h:form id="form11">  
+                    <h:outputText id="role" value="JSF组建测试"></h:outputText>  
+                </h:form> -->
+                <h:form id="indexForm">
                     <tr>
-                        <td><h:commandButton value="facesTest"
+                        <h:commandLink actionListener="#{myBean.action}">
+                            <f:attribute name="attrname1" value="attrvalue1" />
+                            <f:attribute name="attrname2" value="attrvalue2" />
+                            <h:outputText value="Click here" />
+                        </h:commandLink>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton value="getJSFTest"
+                                             action="#{myBean.getJSFTest}" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton id="commandTest" value="facesTest"
                                              action="#{facesTest.test}" /></td>
                     </tr>
                     <tr>
@@ -104,32 +118,36 @@
                         <td><h:commandButton value="新品发布"
                                              action="#{publishedItemController.bookUtil}" /></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><h:commandButton value="EnTest"
                                              action="#{test.EnTest}" /></td>
                     </tr> 
-                    
+
                     <tr>
                         <td><h:commandButton value="EnTest"
                                              action="#{fuzzyQuery.fuzzyQuery}" /></td>
                     </tr>
-                    
+
                     <tr>
                         <td><h:commandButton value="turnToIndex"
                                              action="#{publishedItemController.returnToIndex}" /></td>
                     </tr>
+                    <tr>
+                        <td><h:commandButton value="FMTest"
+                                             action="#{mainTest.FMTest}" /></td>
+                    </tr>
                     <br />
-                    
+
                     <p:dataGrid  var="recent" value="#{fuzzyQuery.fuzzyQueryList}" columns="5">
 
-                                    <p:panel>
-                                        <h:panelGrid>
-                                            <img class="hot_content_img" src="#{recent.picturePath}" width="200"/>
-                                            <h:outputText value="#{recent.sellPrice}" class="hot_content_price" />
-                                            <h:outputText value="#{recent.name}" class="hot_content_name"/>
-                                        </h:panelGrid>
-                                    </p:panel>
-                        </p:dataGrid>
+                        <p:panel>
+                            <h:panelGrid>
+                                <img class="hot_content_img" src="#{recent.picturePath}" width="200"/>
+                                <h:outputText value="#{recent.sellPrice}" class="hot_content_price" />
+                                <h:outputText value="#{recent.name}" class="hot_content_name"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:dataGrid>
                 </h:form>
             </div>
 
