@@ -1,0 +1,94 @@
+@import url(index.css);
+@import url(login.css);
+.main {
+  width: 100%;
+  position: relative; }
+  .main .main-bd {
+    width: 1090px;
+    margin: 0 auto; }
+  .main .info-title {
+    font-size: 14px;
+    line-height: 14px; }
+    .main .info-title a {
+      color: #666666; }
+    .main .info-title a:hover {
+      color: #ffbf08; }
+  .main .info-buy {
+    margin-top: 30px; }
+    .main .info-buy .buy-leftslide {
+      width: 530px;
+      height: 430px;
+      overflow: hidden;
+      float: left; }
+      .main .info-buy .buy-leftslide .buy_img {
+        width: 430px;
+        height: 430px;
+        float: left;
+        background-color: #cccccc; }
+      .main .info-buy .buy-leftslide .buy_list {
+        float: left;
+        width: 78px;
+        height: 430px;
+        margin-left: 16px; }
+        .main .info-buy .buy-leftslide .buy_list ul.list_wrap {
+          width: 78px;
+          height: 430px; }
+          .main .info-buy .buy-leftslide .buy_list ul.list_wrap li {
+            width: 78px;
+            height: 78px;
+            margin-bottom: 10px;
+            background-color: #cccccc; }
+          .main .info-buy .buy-leftslide .buy_list ul.list_wrap .list_border {
+            border: 2px solid #ffbf08; }
+    .main .info-buy .buy-rightslide {
+      float: left;
+      width: 560px;
+      height: 430px;
+      box-sizing: border-box;
+      padding: 10px 40px; }
+      .main .info-buy .buy-rightslide .buy_infoname {
+        color: #666;
+        font-size: 20px;
+        line-height: 30px; }
+      .main .info-buy .buy-rightslide .buy_infocontent {
+        width: 100%;
+        height: 150px;
+        background-color: rgba(171, 171, 171, 0.2);
+        margin-top: 30px;
+        box-sizing: border-box;
+        padding: 6px 12px; }
+        .main .info-buy .buy-rightslide .buy_infocontent .buy_contentprice .content_price {
+          font-size: 28px;
+          color: #ff1506;
+          margin-left: 10px; }
+        .main .info-buy .buy-rightslide .buy_infocontent .buy_content {
+          margin-top: 10px; }
+        .main .info-buy .buy-rightslide .buy_infocontent .content_1 {
+          font-size: 15px;
+          color: #666666; }
+      .main .info-buy .buy-rightslide .buy_infoseller .seller_1 {
+        font-size: 14px;
+        color: #666666;
+        margin-left: 12px; }
+      .main .info-buy .buy-rightslide .buy_button {
+        width: 150px;
+        margin: 120px auto; }
+        .main .info-buy .buy-rightslide .buy_button .buy_button1 {
+          display: inline-block;
+          opacity: 1;
+          width: 150px;
+          height: 50px;
+          box-shadow: none;
+          background-color: #ffbf08;
+          box-sizing: border-box;
+          border: 1px solid #ffbf08;
+          text-align: center;
+          color: #ffffff;
+          font-size: 20px;
+          line-height: 50px;
+          cursor: pointer; }
+        .main .info-buy .buy-rightslide .buy_button .buy_button1:hover {
+          background-color: #fff !important;
+          color: #ffbf08; }
+
+/*# sourceMappingURL=information.css.map */
