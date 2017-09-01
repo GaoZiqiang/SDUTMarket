@@ -1,0 +1,31 @@
+
+#j_idt23_content{
+    border:none !important;
+    padding:0 !important;
+}
+.ui-widget-content{
+    border:none !important;
+}
+.hot_content_img{
+    width:200px !important;
+    height:215px !important;
+}
+.new_1{
+    border:none !important;
+    padding:0 !important;
+}
+.ui-panel-content{
+    padding: 0px !important;
+}
+.hot_content_price{
+    font-size:25px;
+    color:red;
+    position: relative;
+    bottom:4px;
+    left:9px;
+    line-height:40px;
+}
+.hot_content_name{
+    font-size:18px;
+   
+}
