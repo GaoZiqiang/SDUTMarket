@@ -24,11 +24,14 @@ import javax.inject.Named;
 public class MainTest {
 
     public void FMTest() throws TemplateException {
+        System.out.println("---FMTest Start!---\r\n");
         Configuration configuration = new Configuration();
         configuration.setObjectWrapper(new DefaultObjectWrapper());
-        configuration.setTemplateLoader(new ClassTemplateLoader(MainTest.class, "cn/edu/sdut/softlab/test"));
+        System.out.println("---打印当前路径---\r\n" + this.getClass().getResource("/"));
+        configuration.setClassForTemplateLoading(this.getClass(),"cn.edu.sdut.softlab.controller");
+        //configuration.setTemplateLoader(new ClassTemplateLoader(MainTest.class, "cn/edu/sdut/softlab/test"));
         try {
-            Template template = configuration.getTemplate("cn/edu/sdut/softlab/test/temp.ftl");
+            Template template = configuration.getTemplate("temp.ftl");
             StringWriter writer = new StringWriter();
             Map<String, Object> context = new HashMap<String, Object>();
 
