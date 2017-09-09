@@ -1,0 +1,168 @@
+ul {
+    list-style: none; }
+
+a {
+    text-decoration: none; }
+
+.login-container {
+    position: absolute;
+    width: 500px;
+    height: 415px;
+    background-color: #fff;
+    border: 2px solid #ffbf08;
+    display: none;
+    z-index: 10000;
+    padding: 60px;
+    left: 50%;
+    margin-left: -310px; }
+
+.login-container div {
+    box-sizing: border-box; }
+
+.login-container .login-headline {
+    margin-bottom: 50px;
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    line-height: 40px; }
+
+.login-container .login-close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-family: 'Arial';
+    font-size: 20px;
+    cursor: pointer; }
+
+.login-container .login-account,
+.login-container .login-password,
+.login-container .login-remeber,
+.login-container .login-buttonLogin {
+    width: 445px;
+    margin: 30px auto 0px; }
+
+.login-container .login-account input,
+.login-container .login-password input {
+    width: 445px; width: 443px;
+    height: 48px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    margin-top: 30px;
+    margin-left: 85px; 
+    height: 50px;
+    border-radius: 3px;
+    margin: 10px 0px;
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    box-shadow: 0 0.25em 0.5em 0 rgba(46, 61, 73, 0.12);
+    padding: 14px 17px;
+    box-sizing: border-box;
+    color: #000000;
+    transition: box-shadow .3s linear; }
+
+.login-container .login-account input:hover,
+.login-container .login-password input:hover {
+    box-shadow: none; }
+
+.login-container .login-buttonLogin {
+    width: 446px;
+    height: 48px;
+    background-color: #ffbf08;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    margin-top: 51px;
+    margin-left: 25px;
+    font-size: 23px;
+}
+.login-forget {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px; }
+.login-forget a {
+    color: #ffbf08; }
+
+.registration-container {
+    position: absolute;
+    width: 500px;
+    height: 415px;
+    background-color: #fff;
+    border: 2px solid #ffbf08;
+    display: none;
+    z-index: 10001;
+    padding: 60px;
+    left: 50%;
+    margin-left: -310px; }
+
+.registration-container div {
+    box-sizing: border-box; }
+
+.registration-container .registration-headline {
+    margin-bottom: 50px;
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    line-height: 40px; }
+
+.registration-container .registration-close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-family: 'Arial';
+    font-size: 20px;
+    cursor: pointer; }
+
+.registration-container .registration-contact,
+.registration-container .registration-name,
+.registration-container .registration-password,
+.registration-container .registration-buttonSign,
+.registration-container .verify {
+    width: 445px;
+    margin: 30px auto 0px; }
+
+.registration-container .registration-contact input,
+.registration-container .registration-name input,
+.registration-container .registration-password input {
+    width: 445px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 10px 0px;
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    box-shadow: 0 0.25em 0.5em 0 rgba(46, 61, 73, 0.12);
+    padding: 14px 17px;
+    box-sizing: border-box;
+    color: #000000;
+    transition: box-shadow .3s linear; }
+
+.registration-container .registration-contact input:hover,
+.registration-container .registration-name input:hover,
+.registration-container .registration-password input:hover {
+    box-shadow: none; }
+
+.registration-container .registration-buttonSign {
+    width: 350px;
+    height: 48px;
+    background-color: #ffbf08;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    margin-top: 30px;
+    margin-left: 85px; }
+
+#screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 9998;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    display: none; }
+
+/*# sourceMappingURL=login.css.map */
