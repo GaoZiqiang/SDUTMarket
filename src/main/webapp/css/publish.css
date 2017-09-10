@@ -1,0 +1,133 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+body {
+    background-color: rgba(205, 205, 205, 0.6);
+    font-size: 100%;
+    font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+    width: 100%;
+    height: 100%; }
+
+.input {
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    /* background-color: #fff; */
+    border: 1px solid rgba(204, 204, 204, 0.4);
+    display: inline-block;
+    font-size: 1em;
+    vertical-align: middle;
+    padding: 3px 10px;
+    margin-left: -11px; }
+.input option {
+    color: #000;
+    font-size: 1.2em; }
+
+.input:focus {
+    outline: none;
+    border: 1px solid #ffbf08;
+    background-color: #ffffff !important; }
+
+.input:hover {
+    border: 1px solid #ffbf08 !important; }
+
+.inputPrompt {
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    background-color: rgba(204, 204, 204, 0.25);
+    text-align: center;
+    line-height: 40px;
+    font-size: 0.8em; 
+    margin-top: 28px;}
+
+.pubheader {
+    width: 100%;
+    min-width: 1050px;
+    height: 80px;
+    background-color: #ffbf08; }
+
+.pubmain {
+    margin: 0 auto;
+    width: 1050px;
+    height: 100%;
+    background-color: #fff;
+    padding: 10px; }
+.pubmain .addphoto-box {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ffbf08;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; }
+.pubmain .addphoto-box .pho_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: 1px solid #ffbf08;
+    text-align: center;
+    line-height: 30px;
+    font-size: 2em;
+    color: #ffbf08; }
+.pubmain .addphoto-box .pho_describe {
+    text-decoration: none !important;
+    line-height: 30px;
+    font-size: 1em;
+    color: #fff;
+}
+.pubmain .addphoto-box .pho_describe:hover{
+    color: #ffbf08; 
+}
+.pubmain .addcontent-box, .pubmain .addname-box, .pubmain .adddetails-box, .pubmain .addprice-box {
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px; }
+.pubmain .addcontent-box select:focus, .pubmain .addname-box select:focus, .pubmain .adddetails-box select:focus, .pubmain .addprice-box select:focus {
+    outline: none;
+    border: 1px solid #ffbf08;
+    background-color: #ffffff !important; }
+.pubmain .addname-box input {
+    width: 500px; }
+.pubmain .adddetails-box .long {
+    display: block;
+    width: 690px; }
+.pubmain .adddetails-box .area {
+    display: block;
+    width: 690px;
+    height: 200px;
+    margin: 0;
+    border: 1px solid rgba(204, 204, 204, 0.8);
+    border-top: 0px; }
+.pubmain .addprice-box {
+    padding-right: 0; }
+.pubmain .addprice-box .price_now {
+    display: inline-block; }
+.pubmain .addprice-box .price_base {
+    display: inline-block;
+    margin-left:0px; }
+.pubmain .addbasebuy-box {
+    width: 200px;
+    height: 35px;
+    margin: 0 auto; }
+.pubmain .addbasebuy-box a {
+    display: block; }
+
+/*# sourceMappingURL=publish.css.map */
+.main-addinfo input{
+    height: 42px;
+    border: 2px solid #ffbf08;
+    margin: -43px 128px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: block;
+    background-color: white;
+}
